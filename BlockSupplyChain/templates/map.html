@@ -1,0 +1,460 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'map2.css' %}">
+    <title>Geo tracking</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body >
+    <script>
+        // Note: This example requires that you consent to location sharing when
+  // prompted by your browser. If you see the error "The Geolocation service
+  // failed.", it means you probably did not give permission for the browser to
+  // locate you.
+  let map, infoWindow;
+  const arr = []
+  const arrbb = []
+
+  
+  function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: -34.397, lng: 150.644 },
+      zoom: 10,
+    });
+    infoWindow = new google.maps.InfoWindow();
+    const locationButton = document.createElement("button");
+    locationButton.textContent = "Pan to Current Location";
+    locationButton.classList.add("custom-map-control-button");
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+  
+  
+      
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
+              // infoWindow.setPosition(pos);
+              // infoWindow.setContent("Location found.");
+              // infoWindow.open(map);
+              map.setCenter(pos);
+    
+              const marker = new google.maps.Marker({
+              position: pos,
+              map: map,
+              label: "Truck",
+            });
+    
+             
+            var markers;
+           {% for i in data %}
+            
+            markers = new google.maps.Marker({
+            position: new google.maps.LatLng( {{i.latitude}}, {{i.longitude}} ),
+            map: map,
+            label: '{{i.name}}',
+            id: '{{i.id}}',
+            name: '{{i.name}}',
+            contact: '{{i.contact}}',
+            address: '{{i.address}}',
+            bloodgroup: '{{i.bloodgroup}}'
+  
+          });
+  
+  
+          google.maps.event.addListener(markers, "click", (e) => {
+              console.log(markers.getPosition().lat());
+              console.log(`LatLng[${e["id"]}]: ${e.latLng.lat()}. ${e.latLng.lng()}`);
+  
+              findmarker(`${e.latLng.lat()}`,`${e.latLng.lng()}`)
+            });
+  
+              arr.push(markers);
+  
+           {% endfor%}
+
+           //Blood Banks
+
+        //    const pos3 = {
+        //     lat: 19.128442,
+        //     lng: 72.866496,
+        //   };
+        //   const marker3 = new google.maps.Marker({
+        //   position: pos3,
+        //   map: map,
+        //   label: "Holy Spirit Hospital Blood Bank",
+        //   contact: "022 28200353",
+        //   address: "Mahakali  Road, Andheri (E), Mumbai",
+        // });
+
+        // infoWindow3 = new google.maps.InfoWindow();
+        // google.maps.event.addListener(marker3, "click", (e) => {
+           
+        //     infoWindow3 = new google.maps.InfoWindow();
+
+        //     var name = marker3.label;
+        //     var contact = marker3.contact;
+        //     var address = marker3.address;
+        //     const html = "<h1 style='font-size: 20px'>Hey!</h1><h1 style='font-size: 20px'> We are <span style='color:red'>" 
+        //         +name +"  </span></h1>" 
+        //             +"<h1> We are located at " + address + "</h1>"+ '<a style="color:black; bg-color:black" class = "btn" href=tel:' + contact + '>Click to Call Us!</a>'
+
+        //     const infowindow = new google.maps.InfoWindow({
+        //         content: html,
+        //     });
+            
+        //     infowindow.open(map, marker3);
+        //   });
+  
+
+        //   const pos4 = {
+        //     lat: 19.245458,
+        //     lng: 72.856027,
+        //   };
+        //   const marker4 = new google.maps.Marker({
+        //   position: pos4,
+        //   map: map,
+        //   name: "Harilal Bhagwati Hospital Blood Bank",
+        //   contact: "022 28932461",
+        //   address: "S. V. P. Road, Borivali-W, Mumbai",
+        // });
+
+        
+        // google.maps.event.addListener(marker4, "click", (e) => {
+           
+            
+
+        //     var name = marker4.name;
+        //     var contact = marker4.contact;
+        //     var address = marker4.address;
+        //     var num = "tel:"+ contact
+        //     console.log(num)
+
+        //     const html = "<h1 style='font-size: 20px'>Hey!</h1><h1 style='font-size: 20px'> We are <span style='color:red'>" 
+        //                 +name +"  </span></h1>" 
+        //                     +"<h1> We are located at " + address + "</h1>"+ '<a style="color:black; bg-color:black" class = "btn" href=tel:' + contact + '>Click to Call Us!</a>'
+        
+        //     const infowindow4 = new google.maps.InfoWindow({
+        //         content: html,
+        //     });
+            
+        //     infowindow4.open(map, marker4);
+        //   });
+  
+        //    console.log(arr)
+    
+            
+        /*  console.log(arr[0])
+  
+  
+          for(i = 0;i<arr.length;i++)
+          {
+              console.log(i);
+              console.log(arr[i]);
+              google.maps.event.addListener(arr[i], 'click', function() {
+                  
+                  console.log(arr[i])
+                  
+              });                               
+          
+          }
+  
+          console.log(arr[0].get('id'))  */
+  
+          //  var cityCircle = new google.maps.Circle({
+          //     strokeColor: "#FF0000",
+          //     strokeOpacity: 0.8,
+          //     strokeWeight: 2,
+          //     fillColor: "#FF0000",
+          //     fillOpacity: 0.35,
+          //     map,
+          //     center: pos,
+          //     radius: {{rad}},
+          //   });
+            // console.log({{rad}})
+  
+  
+            },
+            () => {
+              handleLocationError(true, infoWindow, map.getCenter());
+            }
+          );
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+  
+        
+  
+    locationButton.addEventListener("click", () => {
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+            // infoWindow.setPosition(pos);
+           // infoWindow.setContent("Location found.");
+           // infoWindow.open(map);
+            map.setCenter(pos);
+  
+            const marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            label: "Home",
+          });
+  
+            
+  
+          var markers;
+         {% for i in data %}
+         
+          markers = new google.maps.Marker({
+          position: new google.maps.LatLng( {{i.latitude}}, {{i.longitude}} ),
+          map: map
+        });
+  
+         {% endfor%}
+  
+  
+          },
+          () => {
+            handleLocationError(true, infoWindow, map.getCenter());
+          }
+        );
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
+    });
+  }
+  
+  
+
+
+  var highlightmarker;
+  
+  function findmarker(lat, lon){
+
+    var flag=0;
+      for(i = 0;i<arr.length;i++)
+      {
+          //console.log((arr[i].getPosition().lat() == lat) && (arr[i].getPosition().lng() == lon))
+          console.log(arr[i]['id'])
+          if((arr[i].getPosition().lat() == lat) && (arr[i].getPosition().lng() == lon))
+          {
+              highlightmarker = arr[i];
+              flag=1;
+          }
+      }
+
+
+  
+      document.getElementById("text").innerHTML="";
+  
+     /* const html = `Label:<span>${highlightmarker.label}</span>
+      <br>
+      id:<span>${highlightmarker.id}</span>
+      <br>
+      name:<span>${highlightmarker.name}</span>
+      <br>
+      address:<span>${highlightmarker.address}</span>
+      <br>
+      contact:<span>${highlightmarker.contact}</span>
+      `  */
+      var name = highlightmarker.name;
+      var contact = highlightmarker.contact;
+      var bloodgroup = highlightmarker.bloodgroup;
+      var address = highlightmarker.address;
+      const html = "<h1 style='font-size: 20px'>Hey!</h1><h1 style='font-size: 20px'> I am <span style='color:red'>" 
+                  +name +"  </span></h1><br><h1>I am an <span style='color:red'>" + bloodgroup+"</span> donor.</h1>"
+                    +"<h1>I live in " + address + "</h1>"+ '<a style="color:black; bg-color:black" class = "btn btn-primary" href=tel:' + contact + '>Click to Call Me!</a>'
+  
+     // document.querySelector("#text").insertAdjacentHTML('afterbegin', html) ;
+
+      const infowindow = new google.maps.InfoWindow({
+        content: html,
+      });
+      
+      infowindow.open(map, highlightmarker);
+
+      if(flag==0)
+      {
+
+                for(i = 0;i<arrbb.length;i++)
+            {
+                //console.log((arr[i].getPosition().lat() == lat) && (arr[i].getPosition().lng() == lon))
+                console.log(arrbb[i]['id'])
+                if((arrbb[i].getPosition().lat() == lat) && (arrbb[i].getPosition().lng() == lon))
+                {
+                    highlightmarker = arrbb[i];
+                    flag=1;
+                }
+            }
+
+
+        
+            document.getElementById("text").innerHTML="";
+        
+            
+            var name = highlightmarker.name;
+            var contact = highlightmarker.contact;
+            var address = highlightmarker.address;
+            const html = "<h1 style='font-size: 20px'>Hey!</h1><h1 style='font-size: 20px'> I am <span style='color:red'>" 
+                        +name +"  </span></h1><br><h1>My contact -  <span style='color:red'>" + contact+"</h1>"
+                            +"<h1>Address is <span style='color:red'>" + address + "</span></h1>"
+        
+            // document.querySelector("#text").insertAdjacentHTML('afterbegin', html) ;
+
+            const infowindow = new google.maps.InfoWindow({
+                content: html,
+            });
+            
+            infowindow.open(map, highlightmarker);
+
+      }
+      
+  } 
+  
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(
+      browserHasGeolocation
+        ? "Error: The Geolocation service failed."
+        : "Error: Your browser doesn't support geolocation."
+    );
+    infoWindow.open(map);
+  }
+      </script>
+
+
+    <style>
+        a:hover {
+            cursor: pointer;
+            transition: ease 0.35s;
+            border: white solid 1px;
+            border-radius: 12px;
+            padding: 5px;
+        }
+
+        a {
+            color: white;
+        }
+    </style>
+    <header class="bg-red-500 body-font" style="background-color: #8a0808;">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <div class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+              
+                <span class="ml-3 text-xl font-bold text-2xl">GEO TRACKING</span>
+            </div>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+              <!-- <nav style="background: #1b1d20; -->
+              <!-- height: 100vh; -->
+              <!-- z-index: 10;"> -->
+                  <!-- <div class="elem">Nodes</div>
+                {% for node in network %}
+                <div class="sub-elem">{{node}}</div>
+                {% endfor %}
+                  <div class="elem"><a href="{% url 'create_drug' %}">Add drug</a></div>
+                  <div class="elem"><a href="{% url 'track' drug_id='23' %}">Track drug</a></div>
+                  <div class="elem"><a href="{% url 'transfer' %}">Transfer</a></div>
+                  <div class="elem"><a href="{% url 'transactions' %}">Transactions</a></div>
+                  <div class="elem"><a href="{% url 'inventory' %}">Inventory</a></div>
+                  <div class="elem">Reports</div> -->
+                  
+          <!-- </nav> -->
+            </nav>
+        </div>
+    </header>
+    
+    <div class="flex flex-wrap">
+        <div id="rad-p" class="h-screen w-screen">
+            <div id="map" class="h-screen w-screen">
+                <div class="object-fill h-full w-full" style="
+            border: 1px solid #E9E9E9;
+            box-shadow: inset 5px 5px 10px #000000;
+            border-radius: 10px;"></div>
+            </div>
+            <div>
+                <form action="search" method="post" >
+                <select id="radius" name="radius" onchange="this.form.submit()">
+                    {% if temp == '1' %}
+                    <option value="1" selected>10km</option>
+                    <option value="2">20km</option>
+                    <option value="3">30km</option>
+                    {%elif temp == '2'%}
+                    <option value="1" >10km</option>
+                    <option value="2" selected>20km</option>
+                    <option value="3">30km</option>
+                    {%else%}
+                    <option value="1" >10km</option>
+                    <option value="2" >20km</option>
+                    <option value="3" selected>30km</option>
+                    {% endif%}
+                </select>
+            </form>
+            </div>
+        </div>
+        <div class="infobox">
+            <!-- <article>
+                <h3 class="text-5xl" style="color: #AE2D2D;">Hi <span id="username" style="text-transform: capitalize;">{{request.user.username}}</span>!</h3>
+                <h4 class="text-3xl">Ready to help a bud out?</h4>
+                <div class="infopara">
+                    <p class="desc">
+                        Welcome to BloodBud!<br>
+                        Currently there are over 1M People
+                        waiting for a blood donation and the
+                        chances are high that one of them is
+                        closer to you than you might think.<br>
+                        We at BloodBud believe that blood
+                        donations need to be provided faster.
+                        Therefore, we created a service to
+                        essentially connect you, the possible
+                        donator, to anyone who would need it.<br>
+                        <br>
+                        The map on the left takes your current
+                        location and shows you people in your
+                        area who are in need for a donation.
+                        By clicking on any markers on the map,
+                        you will get the donee's contact
+                        information.<br>
+                        <br>
+                        Click on the "Call now" button to quickly
+                        get in touch with the person.<br>
+                        But please keep in mind, they are in need
+                        so don't take too long trying to choose the
+                        right person.<br>
+                        <br>
+                        Save a life, <span class="underline italic" style="color: #AE2D2D;">today!</span>
+                    </p>
+
+                </div>
+            </article> -->
+        </div>
+
+        <div id="text"></div>
+
+    </div>
+    <footer></footer>
+    <!-- <script src="{% static 'js/map.js' %}"></script> -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUtW5QYGBmE8E13Lb3Mn7ShiUBgbC2O4Y&callback=initMap&libraries=&v=weekly"
+        async></script>
+
+    </script>
+</body>
+
+</html>
+

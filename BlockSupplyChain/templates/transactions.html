@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!-- <link rel="stylesheet" href="stylee.css">
+        <link rel="stylesheet" href="styles.css"> -->
+        <link rel="stylesheet" href="{% static '/styles/stylee.css' %}" />
+        <link rel="stylesheet" href="{% static '/styles/styles.css' %}" />
+        
+    </head>
+<body>
+    <nav style="background: #8a0808;
+    height: 100vh;
+    z-index: 10;">
+        <!-- <div class="elem">Nodes</div>
+      {% for node in network %}
+      <div class="sub-elem">{{node}}</div>
+      {% endfor %}
+        <div class="elem"><a href="{% url 'create_drug' %}">Add drug</a></div>
+        <div class="elem"><a href="{% url 'track' drug_id='23' %}">Track drug</a></div>
+        <div class="elem"><a href="{% url 'transfer' %}">Transfer</a></div>
+        <div class="elem"><a href="{% url 'transactions' %}">Transactions</a></div>
+        <div class="elem"><a href="{% url 'inventory' %}">Inventory</a></div>
+        <div class="elem">Reports</div> -->
+        <ul>
+        <li class="elem">Nodes</li>
+      {% for node in network %}
+      <li class="sub-elem">{{node}}</li>
+      {% endfor %}
+        <li class="elem"><a href="{% url 'create_drug' %}">Add drug</a></li>
+        <li class="elem"><a href="{% url 'track' drug_id='23' %}">Track drug</a></li>
+        <li class="elem"><a href="{% url 'transfer' %}">Transfer</a></li>
+        <li class="elem"><a href="{% url 'transactions' %}">Transactions</a></li>
+        <li class="elem"><a href="{% url 'inventory' %}">Inventory</a></li>
+        <!-- <li class="elem">Reports</li> -->
+
+    </ul>
+</nav>
+    <h1 style="margin: 20px;">Transactions</h1>
+    <table class="trtable1">
+        <tr class="itr">    
+            <th class="ith"></th>
+            <th class="ith">Drug ID</th>
+            <th class="ith">Sent To</th>
+        </tr>
+        {% for s in sent %}
+        <tr  class="itr">
+            <td class="itd"></td>
+            <td class="itd">{{s.drug_id}}</td>
+            <td class="itd">{{s.receiver}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        <table class="trtable2" style="margin-left: 15px;">
+            <tr class="itr">    
+                <th class="ith"></th>
+               
+                <th class="ith">Drug ID</th>
+                <th class="ith">Sender</th>
+            </tr>
+        {% for r in received %}
+        <tr  class="itr">
+            <td class="itd"></td>
+            <td class="itd">{{r.drug_id}}</td>
+            <td class="itd">{{r.sender}}</td>
+        </tr>
+        {% endfor %}
+            </table>
+</body>
+</html>

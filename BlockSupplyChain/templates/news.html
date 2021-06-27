@@ -1,0 +1,101 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'landing.css' %}">
+        
+    </head>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Proza+Libre:wght@700&family=Red+Hat+Display:wght@700&display=swap");
+        body{
+            font-family: "Red Hat Display";
+        }
+.heading{
+    text-align: center;
+    color: white;
+    font-size: 32px;
+}
+
+.alignleft {
+	float: left;
+    color: white;
+    font-size: 22px;
+    margin-top: -1%;
+}
+.alignright {
+	float: right;
+    color: white;
+    font-size: 22px;
+    margin-top: -1%;
+}
+    </style>
+    <body>
+        <nav>
+            
+            <li><a href="#">Github</a></li>
+        </ul>
+    </nav>
+        <p class="heading">Search Previous Data Breach</p>
+       <div class="mainform"> <form method = "post" action="{% url 'sitebreach' %}">
+           {% csrf_token %}
+            <input type="text" name="domain" id="domain" placeholder="Enter the domain" class="link">
+            <br>
+            
+            <button> Submit</button>
+        </form>
+        
+    </div>
+    <br>
+    <br>
+
+    <div id="textbox" style="clear: both; margin-left: 25px;">
+        <p class="alignleft">Date-{{date}}</p>
+        <br>
+      </div>
+      <br>
+    <!-- {{date}} -->
+    <div id="textbox" style="clear: both; margin-left: 25px;">
+        <p class="alignleft">Description -</p>
+        <br><br>
+        <p class="alignleft">{{desc |safe}}</p>
+        <br>
+      </div>
+      <br>
+      <div id="textbox" style="clear: both; margin-left: 25px;">
+        <br>
+        <p class="alignleft">Data Classes - </p>
+        <br><br>
+        <p class="alignleft">{{dataclasses}}</p>
+        <br>
+      </div>
+      <br>
+      <br>
+
+      <p class="heading">Some Important Websites/Softwares</p>
+
+      <div id="textbox" style="clear: both; margin-left: 25px;">
+      <ul>
+        <li><a href="http://www.privacyfinder.org/"style="color: aliceblue;font-size: 22px;">Privacy Finder Organisation</a></li>
+
+        <li><a href="https://theytrackyou.com/?sec=trackers" style="color: aliceblue;font-size: 22px;">TheyTrackYou.com</a></li>
+      
+        <li><a href=" https://tosdr.org/" style="color: aliceblue;font-size: 22px;">TOSDR Organisation</a></li>
+    </ul>
+        </div>
+
+        <br>
+        <br>
+        <p class="heading">Some Important Articles</p>
+
+      <div id="textbox" style="clear: both; margin-left: 25px;">
+      <ul>
+        <li><a href="https://www.analyticsinsight.net/data-privacy-important-comply-regulations/#:~:text=When%20customers%20give%20their%20personal,their%20employees%20from%20security%20breaches."style="color: aliceblue;font-size: 22px;">Analytics insights</a></li>
+
+        <li><a href="https://www.forbes.com/sites/marymeehan/2019/11/26/data-privacy-will-be-the-most-important-issue-in-the-next-decade/?sh=631289c61882" style="color: aliceblue;font-size: 22px;">Data Privacy Will Be The Most Important Issue In The Next Decade</a></li>
+      
+        <li><a href="https://blog.eccouncil.org/the-importance-of-data-security-and-privacy-for-businesses/" style="color: aliceblue;font-size: 22px;">THE IMPORTANCE OF DATA SECURITY AND PRIVACY FOR BUSINESSES</a></li>
+    </ul>
+        </div>
+        <br><br><br><br>
+    </body>
+</html>

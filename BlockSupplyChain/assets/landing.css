@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Proza+Libre:wght@700&family=Red+Hat+Display:wght@700&display=swap");
+body {
+  background-color: #002233;
+  font-family: "Red Hat Display", sans-serif;
+}
+.plum {
+  color: white;
+  font-size: 76px;
+  text-align: center;
+}
+.mainform {
+  display: flex;
+  justify-content: center;
+  margin-top: 4%;
+}
+.link {
+  width: 800px;
+  height: 50px;
+  border-radius: 20px;
+  border: 0px;
+  background-color: #acabab;
+  font-family: "Red Hat Display";
+  font-size: 24px;
+  margin-top: -5%;
+  padding: 10px;
+}
+.link:focus {
+  outline: none;
+}
+.paste {
+  width: 800px;
+  height: 250px;
+  border-radius: 20px;
+  border: 0px;
+  background-color: #acabab;
+  font-family: "Red Hat Display";
+  font-size: 24px;
+  margin-top: 3%;
+  padding: 10px;
+}
+.paste:focus {
+  outline: none;
+}
+button {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 40px;
+  border: 0px;
+  margin-top: 4%;
+  font-family: "Red Hat Display";
+  font-size: 24px;
+  margin-left: 40%;
+}
+button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  transition: 0.4s ease;
+}
+button:focus {
+  outline: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  width: 100%;
+  font-weight: bold;
+  font-family: "Red Hat Display", sans-serif;
+  height: 9vh;
+  background-color: rgb(0, 0, 0);
+}
+
+nav ul {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: auto;
+  margin-left: 50%;
+}
+
+nav a {
+  text-transform: uppercase;
+  color: black;
+  font-weight: bold;
+}
+
+nav li {
+  background-color: rgb(187, 165, 165);
+  padding: 7px 20px;
+  border-radius: 10px;
+}
+
+.navheading {
+  font-size: 45px;
+  font-family: "Proza Libre";
+  color: white;
+  float: left;
+  position: absolute;
+  margin-left: 2%;
+}
+.nonblue {
+  color: white;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div style="width:20%;float: left;">
+        <!-- <input type="file" name="pic" accept="image/*"> -->
+        <nav style="background: #8a0808;
+        height: 100vh;
+        z-index: 10;">
+            <!-- <div class="elem">Nodes</div>
+          {% for node in network %}
+          <div class="sub-elem">{{node}}</div>
+          {% endfor %}
+            <div class="elem"><a href="{% url 'create_drug' %}">Add drug</a></div>
+            <div class="elem"><a href="{% url 'track' drug_id='23' %}">Track drug</a></div>
+            <div class="elem"><a href="{% url 'transfer' %}">Transfer</a></div>
+            <div class="elem"><a href="{% url 'transactions' %}">Transactions</a></div>
+            <div class="elem"><a href="{% url 'inventory' %}">Inventory</a></div>
+            <div class="elem">Reports</div> -->
+            <ul>
+            <li class="elem">Nodes</li>
+          {% for node in network %}
+          <li class="sub-elem">{{node}}</li>
+          {% endfor %}
+            <li class="elem"><a href="{% url 'create_drug' %}">Add drug</a></li>
+            <li class="elem"><a href="{% url 'track' drug_id='23' %}">Track drug</a></li>
+            <li class="elem"><a href="{% url 'transfer' %}">Transfer</a></li>
+            <li class="elem"><a href="{% url 'transactions' %}">Transactions</a></li>
+            <li class="elem"><a href="{% url 'inventory' %}">Inventory</a></li>
+            <!-- <li class="elem">Reports</li> -->
+    
+        </ul>
+    </nav>
+    </div>
+    <div style="float: left;">
+        <p>ID:</p>
+        <p>Drug Name:</p>
+        <p>Date of Manufacture:</p>
+        <p>Date of Expiry:</p>
+    </div>
+    <div style="float: right;">
+        <img src="" alt="">
+    </div>
+</body>
+</html>

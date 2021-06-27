@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+.input {
+  margin: 10px 50px;
+  padding: 5px 10px;
+  outline: 0px 0px 2px 0px !important;
+  border: 0px 0px 1px 0px;
+}
+
+#btnn {
+  background: #7b47e9;
+  border-radius: 20px;
+  color: white;
+}
+
+#qr {
+  width: 15%;
+  height: 30%;
+  position: fixed;
+  left: 38%;
+  top: 17%;
+}
+
+.hardcode {
+  font-size: x-large;
+}
+
+h3 {
+  display: inline-block;
+  font-size: large !important;
+  font-style: italic;
+}
+
+.itable {
+  color: rgba(122, 71, 233, 0.938) !important;
+  padding-top: 15px;
+  font-family: Helvetica, Arial, sans-serif;
+  width: 75% !important;
+  position: fixed;
+  left: 13%;
+  top: 20%;
+  /* Table reset stuff */
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.ttable {
+  float: left;
+  color: rgba(122, 71, 233, 0.938) !important;
+  padding-top: 15px;
+  font-family: Helvetica, Arial, sans-serif;
+  width: 70% !important;
+  position: fixed;
+  left: 10%;
+  top: 10%;
+  /* Table reset stuff */
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.trtable1 {
+  color: rgba(122, 71, 233, 0.938) !important;
+  padding-top: 15px;
+  font-family: Helvetica, Arial, sans-serif;
+  width: 45% !important;
+  position: fixed;
+  left: 10%;
+  top: 13%;
+  /* Table reset stuff */
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.trtable2 {
+  color: rgba(122, 71, 233, 0.938) !important;
+  padding-top: 15px;
+  font-family: Helvetica, Arial, sans-serif;
+  width: 45% !important;
+  position: fixed;
+  right: 5%;
+  top: 13%;
+  /* Table reset stuff */
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.itd,
+.ith {
+  border: 0 none;
+  height: 30px;
+}
+
+.ith {
+  /* Gradient Background */
+  background: #7a47e9c2;
+  color: #fff;
+  font-weight: bold;
+  height: 40px;
+}
+
+.itd {
+  background: #fafafa;
+  text-align: center;
+}
+
+/* Zebra Stripe Rows */
+
+.itr:nth-child(even) .itd {
+  background: #eee;
+}
+.itr:nth-child(odd) .itd {
+  background: #fdfdfd;
+}
+
+/* First-child blank cells! */
+.itr .itd:first-child,
+.itr .ith:first-child {
+  background: none;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: right;
+  padding-right: 10px;
+  width: 80px;
+}
+
+/* Add border-radius to specific cells! */
+.itr:first-child .ith:nth-child(2) {
+  border-radius: 5px 0 0 0;
+}
+
+.itr:first-child .ith:last-child {
+  border-radius: 0 5px 0 0;
+}
+.go {
+  /* display: inline-block;
+    border-radius: 10px;
+    background-color: rgba(22, 177, 22, 0.582);
+    color: white; */
+  padding: 5px 7px;
+  font-size: small;
+  color: green;
+}
+.wait {
+  /* display: inline-block;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.473);
+    color: white; */
+  padding: 5px;
+  font-size: small;
+  color: red;
+}
+
+.cont {
+  float: left;
+}

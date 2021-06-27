@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 5.5fr;
+  font-family: "Montserrat", sans-serif;
+}
+
+.nav {
+  background: #1b1d20;
+  height: 100vh;
+  z-index: 10;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.main {
+  background: #f9f3fa;
+  height: 100vh;
+  padding: 2em;
+}
+
+.drug_info {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  font-size: 1.5em;
+}
+
+.info {
+  margin: 0.3em;
+}
+
+.info-title {
+  font-weight: 600;
+  display: inline-block;
+}
+@import url(https://fonts.googleapis.com/css?family=Dosis:500);
+
+body {
+  background: #f1f1f1;
+}
+
+.container {
+  width: 1200px;
+  margin: 200px auto;
+}
+
+.timeline {
+  counter-reset: year 2013;
+  position: relative;
+}
+
+.timeline li {
+  list-style: none;
+  float: left;
+  width: 20%;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Dosis", sans-serif;
+  z-index: 5;
+}
+
+ul:nth-child(1) {
+  color: #4caf50;
+  z-index: 5;
+}
+
+li:before {
+  content: "";
+  z-index: 5;
+}
+
+.active:before {
+  content: "✔";
+}
+
+.timeline li:before {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #4caf50;
+  z-index: 5;
+  border-radius: 50%;
+  display: block;
+  text-align: center;
+  line-height: 50px;
+  margin: 0 auto 10px auto;
+  background: #f1f1f1;
+  color: #000;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.timeline li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+
+  top: 25px;
+  left: -50%;
+  z-index: -999;
+  transition: all ease-in-out 0.3s;
+  z-index: 5;
+}
+
+.timeline li:first-child:after {
+  content: none;
+}
+.timeline li.active {
+  color: #555555;
+  z-index: 5;
+}
+.timeline li.active:before {
+  background: #4caf50;
+  color: #f1f1f1;
+  z-index: 5;
+}
+
+.timeline li.active + li:after {
+  z-index: 5;
+}
+
+.hr {
+  width: 100%;
+  background: #4caf50;
+  height: 1%;
+  position: fixed;
+  top: 59%;
+  z-index: 1;
+}
+
+.elem {
+  font-size: 1.2em;
+  color: #fff;
+  padding: 1em;
+  padding: 1em;
+}
+
+.sub-elem {
+  background: #fff;
+  padding: 1em;
+  font-size: 1.2em;
+  color: rgb(4, 184, 34);
+  font-weight: 800;
+  display: block !important;
+}
+
+.content {
+  display: inline-block;
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: 500;
+  margin-left: 105px;
+}
+
+.pic {
+  z-index: 5;
+  background-image: url("qr.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.matter {
+  z-index: 1;
+  background-color: indigo;
+  display: inline-block;
+}
+
+.card {
+  display: inline-block;
+}

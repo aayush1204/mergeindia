@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="stylee.css">
+    <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="{% static '/styles/styles.css' %}" />
+    <link rel="stylesheet" href="{% static '/styles/stylee.css' %}" />
+</head>
+<body>
+  
+        <h1 style="position:fixed;top:4%;left:20%;font-size: 250%;">Inventory</h1>
+        <nav style="background: #8a0808;
+        height: 100vh;
+        z-index: 10;">
+            <!-- <div class="elem">Nodes</div>
+          {% for node in network %}
+          <div class="sub-elem">{{node}}</div>
+          {% endfor %}
+            <div class="elem"><a href="{% url 'create_drug' %}">Add drug</a></div>
+            <div class="elem"><a href="{% url 'track' drug_id='23' %}">Track drug</a></div>
+            <div class="elem"><a href="{% url 'transfer' %}">Transfer</a></div>
+            <div class="elem"><a href="{% url 'transactions' %}">Transactions</a></div>
+            <div class="elem"><a href="{% url 'inventory' %}">Inventory</a></div>
+            <div class="elem">Reports</div> -->
+            <ul>
+            <li class="elem">Nodes</li>
+          {% for node in network %}
+          <li class="sub-elem">{{node}}</li>
+          {% endfor %}
+            <li class="elem"><a href="{% url 'create_drug' %}">Add drug</a></li>
+            <li class="elem"><a href="{% url 'track' drug_id='23' %}">Track drug</a></li>
+            <li class="elem"><a href="{% url 'transfer' %}">Transfer</a></li>
+            <li class="elem"><a href="{% url 'transactions' %}">Transactions</a></li>
+            <li class="elem"><a href="{% url 'inventory' %}">Inventory</a></li>
+            <!-- <li class="elem">Reports</li> -->
+    
+        </ul>
+    </nav>
+    <table class="itable">
+        <tr class="itr">
+        
+            <th class="ith"></th>
+            <th class="ith">Drug Name</th>
+            <th class="ith">Drug ID</th>
+            <th  class="ith">Date of Expiry</th>
+            <th class="ith">Status</th>
+
+        </tr>
+        {% for i in l %}
+        <tr>
+            <td class="itd grey" style="background-color: #eee;"></td>
+            <td class="itd">{{i.drug_name}}</td>
+            <td class="itd">{{i.drug_id}}</td>
+            <td class="itd">{{i.doe}}</td>
+            <td class="itd">
+                <div class="go">Safe</div>
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+</body>
+</html>

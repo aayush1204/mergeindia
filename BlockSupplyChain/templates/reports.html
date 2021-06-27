@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylee.css"> -->
+    <link rel="stylesheet" href="{% static '/styles/stylee.css' %}" />
+    <link rel="stylesheet" href="{% static '/styles/styles.css' %}" />
+</head>
+<body>
+    <div class="nav">
+        <div class="elem">Nodes</div>
+      {% for node in network %}
+      <div class="sub-elem">{{node}}</div>
+      {% endfor %}
+        <div class="elem"><a href="{% url 'create_drug'%}">Add drug</a></div>
+        <div class="elem"><a href="{% url 'track' drug_id='23'%}">Track drug</a></div>
+        <div class="elem"><a href="{% url 'transfer'%}">Transfer</a></div>
+        <div class="elem"><a href="{% url 'transactions'%}">Transactions</a></div>
+        <div class="elem"><a href="{% url 'inventory'%}">Inventory</a></div>
+        <div class="elem">Reports</div>
+    </div>
+
+    <table class="ttable">
+        <tr class="itr">
+            
+            <th class="ith"></th>
+            
+            <th class="ith">Counterfeit Drugs(Potentially)</th>
+            <th class="ith">Drug Name</th>
+            <th  class="ith">Location</th>
+            <th class="ith">Checked</th>
+
+        </tr>
+        <tr class="itr">
+            <td class="itd grey"></td>
+            <td class="itd">3412-fga-2jhd</td>
+            <td class="itd">Aspirin</td>
+            <td class="itd">Bhavans,Andheri,West</td>
+            <td class="itd">Unchecked</td> 
+        </tr>
+
+         <tr class="itr">
+            <td class="itd grey"></td>
+            <td class="itd">678t-ewd-2eue</td>
+            <td class="itd">Saridon</td>
+            <td class="itd">Bhavans,Andheri,West</td>
+            <td class="itd">Unchecked</td> 
+        </tr>
+
+        </table>
+        </div>
+        
+
+</body>
+</html>

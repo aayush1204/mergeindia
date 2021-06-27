@@ -1,0 +1,45 @@
+.navbar-brand {
+    font-size: 2em !important;
+    padding-left: 0.5em;
+}
+
+button[type="submit"] {
+    background: #5c6aff;
+    color: white;
+    font-size: 1.2em !important;
+}
+
+.login {
+    text-align: right;
+}
+
+.join {
+    border: rgb(214, 214, 214) 1px solid !important;
+    border-radius: 1.5em !important;
+    padding: 0.7em 1em !important;
+    background: none !important;
+    align-items: center !important;
+    font-size: 1.2em !important;
+    margin: 1em 0 !important;
+    color: rgb(119, 119, 119) !important;
+    cursor: pointer !important;
+    transition: all .2s ease-in-out !important;
+}
+
+.alternative {
+    text-align: center;
+}
+
+
+.join:focus {
+    outline: none;
+}
+
+.join:active , .btn:active {
+    transform: scale(0.95);
+}
+
+.btn:active {
+    color: #fff !important;
+}
+
